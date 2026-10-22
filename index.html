@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Waste-Nothing Kitchen · Naomi Sato</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=DM+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
+:root{color-scheme:light;
   --paper:#fdf9f2; --paper-2:#ffffff; --card:#ffffff; --ink:#2f2a25; --muted:#6f665d; --rule:#eadfce;
   --indigo:#3d5a99; --indigo-2:#4a68a8; --on-indigo:#ffffff; --rust:#d0693a; --rust-soft:#fdeee4; --stitch:rgba(255,255,255,.6);
   --serif:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",serif;
@@ -17,13 +17,7 @@
   --shadow:0 20px 40px rgba(61,90,153,.16);
 }
 
-@media (prefers-color-scheme: dark){
-  :root{
-    --paper:#14161c; --paper-2:#191c24; --card:#20242e; --ink:#ede6dc; --muted:#b3a99d; --rule:#343a49;
-    --indigo:#2c3e6b; --indigo-2:#36497a; --on-indigo:#ede6dc; --rust:#e3895a; --rust-soft:#33241c; --stitch:rgba(237,230,220,.35);
-    --shadow:0 22px 44px rgba(0,0,0,.55);
-  }
-}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -170,11 +164,7 @@ footer p{font-family:var(--sans);font-size:13px;color:var(--muted);max-width:760
   .sticky{display:flex}
   .topbar .pill{display:none}
 }
-@media (prefers-color-scheme: dark){
-  .btn{color:#1a120c}
-  .hero h1,.part h3,.box.s h4{color:var(--ink)}
-  .row.big b{color:#f4b38c}
-}
+
 
 /* ===== polished hero (v2) ===== */
 :root{--display:"Fraunces",Georgia,serif;--mono:"DM Mono",ui-monospace,Menlo,Consolas,monospace;--body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--deep:#2b4278;--gold:#f0b48d}
@@ -230,13 +220,7 @@ h1,h2,h3{font-family:var(--display);font-optical-sizing:auto}
 .seal{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd9bf,#e9a57b 60%,#c97a4c);display:grid;place-items:center;color:#3a2618;font-family:var(--display);font-weight:700;font-size:16px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35)}
 @keyframes slide{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.track{animation:none}.book .inner,.book:hover .inner{transform:none}}
-@media (prefers-color-scheme: dark){
-  :root{--deep:#1f2c4d}
-  .hx h1{color:var(--ink)}
-  .tag{background:#262b38}
-  .b2{color:var(--ink);border-color:var(--ink)}
-  .chip .pillg{color:#2a1a10}
-}
+
 @media (max-width:980px){.bar .side{display:none}.bar .wrap{justify-content:center}}
 @media (max-width:860px){
   .hx{padding:34px 0 46px}
