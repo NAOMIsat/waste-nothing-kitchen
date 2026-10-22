@@ -274,6 +274,26 @@ h1,h2,h3{font-family:var(--display);font-optical-sizing:auto}
 .topbuy a{width:100%;justify-content:center;font-size:18px;padding:14px 16px}
 body{padding-bottom:84px}
 }
+@media (max-width:760px){
+.tocx .part{padding:16px 18px 14px}
+.tocx .ph{display:grid;grid-template-columns:1fr auto;grid-template-areas:"num plus" "title title" "pill pill";row-gap:6px;border-bottom:1px solid #e3d3b8;padding-bottom:12px;margin-bottom:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tocx .pn{grid-area:num;font-weight:500}
+.tocx .ph::after{content:"+";grid-area:plus;font-family:var(--mono);font-size:22px;line-height:1;color:var(--rust);transition:transform .2s}
+.tocx .part.open .ph::after{transform:rotate(45deg)}
+.tocx .part h3{grid-area:title;font-size:20px}
+.tocx .pc{grid-area:pill;justify-self:end}
+.tocx .part ol{display:none;padding-top:4px}
+.tocx .part.open ol{display:block}
+.tocx .part:not(.open) .ph{border-bottom-color:#e3d3b8}
+.tocx .toc{gap:14px}
+.hx .intro{font-size:17px}
+.cta{flex-direction:column;align-items:stretch;gap:10px}
+.cta .btn{display:flex;justify-content:center;width:100%;box-sizing:border-box}
+.cta .btn::after{content:"\00a0\00b7\00a0$27"}
+.cta .price{display:none}
+.close{padding:64px 0}
+.close p{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -493,6 +513,12 @@ body{padding-bottom:84px}
 function set(on){bar.classList.toggle('on',on);bar.setAttribute('aria-hidden',on?'false':'true');var a=bar.querySelector('a');a.tabIndex=on?0:-1;}
 if('IntersectionObserver' in window){new IntersectionObserver(function(e){set(!e[0].isIntersecting&&e[0].boundingClientRect.top<0)}).observe(hero);}
 else{window.addEventListener('scroll',function(){set(hero.getBoundingClientRect().bottom<0)},{passive:true});}})();
+</script>
+<script>
+(function(){document.querySelectorAll('#contents .part').forEach(function(part){var h=part.querySelector('.ph');if(!h)return;
+h.setAttribute('role','button');h.setAttribute('tabindex','0');h.setAttribute('aria-expanded','false');
+function t(){var o=part.classList.toggle('open');h.setAttribute('aria-expanded',String(o));}
+h.addEventListener('click',t);h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});});})();
 </script>
 </body>
 </html>
