@@ -260,9 +260,17 @@ h1,h2,h3{font-family:var(--display);font-optical-sizing:auto}
 @media (max-width:760px){.tocx .toc{grid-template-columns:1fr}.tocx .part{padding:18px 18px 14px}}
 #contents.tocx .printline{max-width:1080px;margin:26px auto 0;background:rgba(255,255,255,.06);border:1px dashed rgba(240,180,141,.55);border-radius:6px;color:#f4ede3;text-align:center;padding:14px 18px;font-size:15px;box-shadow:none}
 #contents.tocx .printline b{color:var(--gold)}
+.topbuy{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--deep);color:#fff;box-shadow:0 6px 18px rgba(20,30,60,.25);transform:translateY(-110%);transition:transform .3s ease;visibility:hidden}
+.topbuy.on{transform:none;visibility:visible}
+.topbuy .wrap{max-width:1240px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:10px;padding-bottom:10px}
+.topbuy .nm{font-family:var(--display);font-weight:500;font-size:20px;color:#fff;letter-spacing:-.2px}
+.topbuy a{display:inline-flex;align-items:center;gap:.3em;font-family:var(--body);font-weight:700;font-size:16px;text-decoration:none;color:#fff;background:var(--rust);border:2px solid #b4552a;border-radius:6px;padding:10px 20px;box-shadow:0 3px 0 #b4552a;white-space:nowrap}
+.topbuy a:hover{transform:translateY(-1px)}
+@media (max-width:600px){.topbuy .nm{font-size:15px;white-space:nowrap}.topbuy a{font-size:13.5px;padding:8px 12px}}
 </style>
 </head>
 <body>
+<div class="topbuy" id="topbuy" aria-hidden="true"><div class="wrap"><span class="nm">The Waste-Nothing Kitchen</span><a href="https://naomisato.gumroad.com/l/wastenothingkitchen?wanted=true" data-gumroad-action="buy" tabindex="-1">Get the book · <span data-gumroad-field="price">$27</span></a></div></div>
 
 <div class="bar">
   <div class="wrap">
@@ -446,10 +454,7 @@ h1,h2,h3{font-family:var(--display);font-optical-sizing:auto}
   </div>
 </footer>
 
-<div class="sticky" id="sticky" aria-hidden="true">
-  <span class="price" data-gumroad-field="price">$27</span>
-  <a class="btn" href="https://naomisato.gumroad.com/l/wastenothingkitchen?wanted=true" data-gumroad-action="buy" tabindex="-1">Get the book</a>
-</div>
+
 
 <script>
 (function(){
@@ -474,17 +479,13 @@ h1,h2,h3{font-family:var(--display);font-optical-sizing:auto}
     els.forEach(function(e){io.observe(e);});
   } else { els.forEach(function(e){e.classList.add('in');}); }
 
-  var sticky=document.getElementById('sticky'), hero=document.querySelector('.hero');
-  function onScroll(){
-    var past=hero.getBoundingClientRect().bottom<0;
-    var nearEnd=(window.innerHeight+window.scrollY)>=(document.body.scrollHeight-260);
-    var show=past&&!nearEnd;
-    sticky.classList.toggle('show',show);
-    sticky.setAttribute('aria-hidden',String(!show));
-    sticky.querySelector('a').setAttribute('tabindex',show?'0':'-1');
-  }
-  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 })();
+</script>
+<script>
+(function(){var bar=document.getElementById('topbuy'),hero=document.querySelector('.hx');if(!bar||!hero)return;
+function set(on){bar.classList.toggle('on',on);bar.setAttribute('aria-hidden',on?'false':'true');var a=bar.querySelector('a');a.tabIndex=on?0:-1;}
+if('IntersectionObserver' in window){new IntersectionObserver(function(e){set(!e[0].isIntersecting&&e[0].boundingClientRect.top<0)}).observe(hero);}
+else{window.addEventListener('scroll',function(){set(hero.getBoundingClientRect().bottom<0)},{passive:true});}})();
 </script>
 </body>
 </html>
